@@ -28,6 +28,7 @@ function Home() {
         setLai(false);
         setDele(false);
         setUpda(false);
+        setLoad(null);
       }
     } catch (error) {
       if (error.mes === "Token không hợp lệ !") {
@@ -84,7 +85,6 @@ function Home() {
         });
         if (rs.data.err === 0) {
           setLai(true);
-          setLoad(null);
         }
       }
     },
@@ -107,7 +107,6 @@ function Home() {
           });
           if (rs.data.err === 0) {
             setLai(true);
-            setLoad(null);
           }
         }
       }
