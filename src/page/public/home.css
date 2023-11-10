@@ -1,0 +1,42 @@
+.home {
+  position: relative;
+}
+.product {
+  position: relative;
+}
+.product1 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #f6c90e;
+  z-index: -1;
+  clip-path: circle(20% at 0 0);
+}
+.bar::-webkit-scrollbar {
+  display: none;
+}
+.product::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #fff;
+}
+.home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  background-color: #f6c90e;
+  clip-path: polygon(0 81%, 100% 57%, 100% 100%, 0% 100%);
+}
