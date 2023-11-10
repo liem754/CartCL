@@ -16,7 +16,7 @@ function Home() {
   const [lai, setLai] = useState(false);
   const [dele, setDele] = useState(false);
   const [upda, setUpda] = useState(false);
-  const [load, setLoad] = useState(false);
+  const [load, setLoad] = useState(null);
 
   const { products } = useSelector((state) => state.product);
   const { isLoggedIn } = useSelector((state) => state.auth);
@@ -70,7 +70,7 @@ function Home() {
   console.log();
   const handleadd = useCallback(
     async (pid, price, quantity, thumb, title) => {
-      setLoad(true);
+      setLoad(pid);
       const rss = await getProductsbyid(pid);
       if (rss.data.err === 0) {
         setNumber((pre) => pre + 1);
@@ -84,7 +84,7 @@ function Home() {
         });
         if (rs.data.err === 0) {
           setLai(true);
-          setLoad(false);
+          setLoad(null);
         }
       }
     },
@@ -92,7 +92,7 @@ function Home() {
   );
   const handlepre = useCallback(
     async (pid, price, quantity, thumb, title) => {
-      setLoad(true);
+      setLoad(pid);
       const rss = await getProductsbyid(pid);
       if (rss.data.err === 0) {
         setNumber((pre) => pre - 1);
@@ -107,7 +107,7 @@ function Home() {
           });
           if (rs.data.err === 0) {
             setLai(true);
-            setLoad(false);
+            setLoad(null);
           }
         }
       }
@@ -209,7 +209,7 @@ function Home() {
                           1
                         )}`}</h2>
                         <div className="flex justify-between items-center">
-                          {load ? (
+                          {load === item?.product ? (
                             <div role="status">
                               <svg
                                 aria-hidden="true"
